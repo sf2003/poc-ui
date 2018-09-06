@@ -1,12 +1,13 @@
-import { findMyDummyApplications } from '../../services/ApplicationManager/applicationList';
+
 import { defaultPageSize } from '../../utils/config';
+import { deleteUser, findUserPageByQuery } from '../../services/UserInfo/userInfoList';
 
 
 export default {
-  namespace: 'applicationList',
+  namespace: 'userInfoList',
 
   state: {
-    appList: [],
+    userList: [],
     tableLoading: false,
     pagination: {
       showSizeChanger: true,
@@ -26,17 +27,17 @@ export default {
   effects: {
     *fetchList({ payload }, { call, put }) {
       yield put({ type: 'showLoading' });
-      const data = yield call(findMyDummyApplications, payload);
+      const data = yield call(findUserPageByQuery, payload);
 
       if (data && data.success) {
         yield put({
           type: 'querySuccess',
           payload: {
-            appList: data.result.rows,
+            userList: data.rows,
             pagination: {
               current: typeof (payload.currentPage) === 'undefined' ? 1 : Number(payload.currentPage),
               pageSize: typeof (payload.pageSize) === 'undefined' ? defaultPageSize : Number(payload.pageSize),
-              total: data.result.totalNum,
+              total: data.rowsTotal,
             },
             loading: false,
             queryData: payload.queryData,
@@ -49,6 +50,10 @@ export default {
       }
     },
 
+    *deleteUser({ payload }, { call, put }) {
+      const response = yield call(deleteUser, payload.userId);
+      payload.callback(response);
+    }
   },
 
   reducers: {
@@ -61,10 +66,10 @@ export default {
     },
 
     querySuccess (state, action) {
-      const { appList, pagination, queryData, sort } = action.payload;
+      const { userList, pagination, queryData, sort } = action.payload;
       return {
         ...state,
-        appList,
+        userList,
         pagination: {
           ...state.pagination,
           ...pagination,

@@ -2,9 +2,13 @@
 export function getAuthority() {
   // return localStorage.getItem('antd-pro-authority') || ['admin', 'user'];
   const authority = localStorage.getItem('antd-pro-authority');
-  return authority ? JSON.parse(authority) : ['admin', 'user'];
+  return authority ? JSON.parse(authority) : ['admin', 'user', 'super_admin'];
 }
 
 export function setAuthority(authority) {
-  return localStorage.setItem('antd-pro-authority', JSON.stringify(authority));
+  if (authority === '') {
+    return localStorage.setItem('antd-pro-authority', '');
+  } else {
+    return localStorage.setItem('antd-pro-authority', JSON.stringify(authority));
+  }
 }

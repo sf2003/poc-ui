@@ -5,6 +5,7 @@ import { Link } from 'dva/router';
 import classNames from 'classnames';
 import styles from './index.less';
 import { urlToList } from '../_utils/pathTools';
+import { name } from '../../utils/config'
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -243,7 +244,7 @@ export default class SiderMenu extends PureComponent {
         <div className={styles.logo} key="logo">
           <Link to="/">
             <img src={logo} alt="logo" />
-            <h1>Ant Design Pro</h1>
+            <h1>{name}</h1>
           </Link>
         </div>
         <Menu

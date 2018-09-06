@@ -1,11 +1,11 @@
 module.exports = {
-  name: 'POC 1.4',
-  prefix: 'Adf_Data',
-  footerText: '',
+  name: 'POC Platform',
+  prefix: 'POC',
+  footerText: 'POC Platform',
   logo: '/logo.png',
   iconFontCSS: '/iconfont.css',
   iconFontJS: '/iconfont.js',
-  baseURL: 'https://diamond-application.apps.rayfay.io',
+  baseURL: '',
   defaultPageSize: 20,
   api: {},
 };

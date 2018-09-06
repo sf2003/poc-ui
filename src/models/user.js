@@ -21,20 +21,9 @@ export default {
     },
     *fetchCurrent(_, { call, put }) {
       const userResponse = yield call(queryCurrentUser);
-      const userAuthResponse = yield call(queryCurrentUserAuth);
 
       if (userResponse.success) {
         const currentAuthority = userResponse.result.authorities.split(',');
-
-        if (userAuthResponse.success) {
-          if (userAuthResponse.result.rows[0].isSuperAdmin) {
-            currentAuthority.push("admin")
-          } else {
-            currentAuthority.push("user")
-          }
-        } else {
-          currentAuthority.push("user")
-        }
 
         setAuthority(currentAuthority);
         reloadAuthorized();

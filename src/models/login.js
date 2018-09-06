@@ -45,18 +45,15 @@ export default {
         type: 'changeLoginStatus',
         payload: {
           status: false,
-          currentAuthority: 'guest',
+          currentAuthority: '',
         },
       });
       reloadAuthorized();
-      yield put(
-        routerRedux.push({
-          pathname: '/user/login',
-          search: stringify({
-            redirect: window.location.href,
-          }),
-        })
-      );
+      let from = location.pathname
+      if (location.pathname === '/dashboard') {
+        from = '/dashboard'
+      }
+      window.location = `${location.origin}/logout?from=${from}`
     },
   },
 
