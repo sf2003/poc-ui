@@ -1,10 +1,10 @@
 import React, { Fragment, PureComponent } from 'react';
 import { Button, Card, Divider, Skeleton } from 'antd';
-import DescriptionList from '../../components/DescriptionList';
 import { connect } from 'dva';
 import moment from 'moment';
-import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 import { routerRedux } from 'dva/router';
+import DescriptionList from '../../components/DescriptionList';
+import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 
 const { Description } = DescriptionList;
 

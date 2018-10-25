@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Button, Card, DatePicker, Form, Input, Select, Skeleton, message, Modal } from 'antd';
 import { connect } from 'dva';
-import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 import { routerRedux } from 'dva/router';
 import moment from 'moment';
+import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 
 const FormItem = Form.Item;
 

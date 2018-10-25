@@ -15,10 +15,9 @@ import {
   Popconfirm,
   message, Modal,
 } from 'antd';
-import { Link } from 'dva/router';
-import styles from '../UserInfo/UserInfoList.less';
+import { Link, routerRedux } from 'dva/router';
+import styles from './UserInfo/UserInfoList.less';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
-import { routerRedux } from 'dva/router';
 
 const FormItem = Form.Item;
 const RangePicker = DatePicker.RangePicker;
@@ -28,6 +27,11 @@ const RangePicker = DatePicker.RangePicker;
 }))
 @Form.create()
 export default class UserInfoList extends PureComponent {
+  state = {
+    formValues: {},
+    sortedInfo: {},
+  };
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
@@ -35,11 +39,6 @@ export default class UserInfoList extends PureComponent {
       payload: {},
     });
   }
-
-  state = {
-    formValues: {},
-    sortedInfo: {},
-  };
 
   handleSearch = e => {
     e.preventDefault();
@@ -90,8 +89,8 @@ export default class UserInfoList extends PureComponent {
   };
 
   render() {
-    const { userList, tableLoading, pagination, dispatch } = this.props;
-    const { getFieldDecorator } = this.props.form;
+    const { userList, tableLoading, pagination, dispatch, form } = this.props;
+    const { getFieldDecorator } = form;
     const { formValues, sortedInfo } = this.state;
 
     const columns = [{
@@ -161,7 +160,7 @@ export default class UserInfoList extends PureComponent {
     const onPageChanged = (pagination, filters, sorter) => {
       const payload = {
         queryData: {
-          ...formValues
+          ...formValues,
         },
         currentPage: pagination.current,
         pageSize: pagination.pageSize,
@@ -174,7 +173,7 @@ export default class UserInfoList extends PureComponent {
         }
 
         this.setState({
-          sortedInfo: sorter
+          sortedInfo: sorter,
         })
       }
 
