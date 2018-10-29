@@ -119,15 +119,15 @@ export default class UserInfoList extends PureComponent {
       title: '',
       render: (record) => (
         <div>
-          <Link href="#" to={`/userInfo/userInfoDetail/${record.userId}`}><Icon type="eye" theme="outlined"/></Link>
+          <Link href="#" to={`/userInfo/userInfoDetail/${record.userId}`}><Icon type="eye" theme="outlined" /></Link>
           <Divider type="vertical" />
-          <Link href="#" to={`/userInfo/userInfoEdit/${record.userId}`}><Icon type="edit" theme="outlined"/></Link>
+          <Link href="#" to={`/userInfo/userInfoEdit/${record.userId}`}><Icon type="edit" theme="outlined" /></Link>
           <Divider type="vertical" />
           <Popconfirm title="是否要删除本记录?" onConfirm={() => deleteUser(record.userId)} placement="left">
             <a className='deleteAction'><Icon type="delete" theme="outlined" /></a>
           </Popconfirm>
         </div>
-      )
+      ),
     }];
 
     const deleteUser = (userId) => {
@@ -191,7 +191,7 @@ export default class UserInfoList extends PureComponent {
               <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
                 <Col md={8} sm={24}>
                   <FormItem label="姓名">
-                    {getFieldDecorator('name')(<Input placeholder="请输入"/>)}
+                    {getFieldDecorator('name')(<Input placeholder="请输入" />)}
                   </FormItem>
                 </Col>
                 <Col md={8} sm={24}>
@@ -229,7 +229,7 @@ export default class UserInfoList extends PureComponent {
           </div>
           <div>
             <Button icon='plus' type="primary" size='small' onClick={() => dispatch(routerRedux.push('/userInfo/userInfoEdit/new'))} style={{ marginBottom: '8px'}}>新增用户</Button>
-            <Table columns={columns} loading={tableLoading} dataSource={userList} pagination={pagination} onChange={onPageChanged} rowKey="userId"/>
+            <Table columns={columns} loading={tableLoading} dataSource={userList} pagination={pagination} onChange={onPageChanged} rowKey="userId" />
           </div>
         </Card>
       </PageHeaderLayout>
