@@ -53,7 +53,7 @@ export default {
     *deleteUser({ payload }, { call, put }) {
       const response = yield call(deleteUser, payload.userId);
       payload.callback(response);
-    }
+    },
   },
 
   reducers: {

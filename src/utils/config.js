@@ -5,7 +5,7 @@ module.exports = {
   logo: '/logo.png',
   iconFontCSS: '/iconfont.css',
   iconFontJS: '/iconfont.js',
-  baseURL: '',
+  baseURL: 'http://localhost:8088',
   defaultPageSize: 20,
   api: {},
 };

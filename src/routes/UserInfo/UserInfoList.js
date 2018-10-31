@@ -16,7 +16,7 @@ import {
   message, Modal,
 } from 'antd';
 import { Link, routerRedux } from 'dva/router';
-import styles from './UserInfo/UserInfoList.less';
+import styles from './UserInfoList.less';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 
 const FormItem = Form.Item;
